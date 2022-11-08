@@ -1,0 +1,21 @@
+{
+  "hostname": "krapaince-arch",
+  "lang": "en_US.UTF-8",
+  "locale_gen": [
+    "en_US.UTF-8 UTF-8",
+    "en_US ISO-8859-1"
+  ],
+  "timezone": "Europe/Paris",
+  "username": "krapaince",
+  "skel": [
+    "Desktop",
+    "Documents",
+    "Downloads",
+    "Pictures",
+    "Videos"
+  ],
+  "krapaince_config": {
+    "install": true,
+    "dotdrop_profile": "Krapaince-arch"
+  }
+}

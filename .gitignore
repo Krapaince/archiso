@@ -1,2 +1,4 @@
 __pycache__/
 archiso-tmp/
+out
+releng

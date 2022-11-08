@@ -1,0 +1,10 @@
+4c4
+< iso_name="archlinux"
+---
+> iso_name="krapaince-archlinux"
+6c6
+< iso_publisher="Arch Linux <https://archlinux.org>"
+---
+> iso_publisher="Krapaince <https://github.com/Krapaince>"
+24a25
+>   ["/usr/local/bin/install.py"]="0:0:755"
