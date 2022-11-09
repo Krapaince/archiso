@@ -153,14 +153,14 @@ def install_paru(config: Config):
     cmds = [
         f"git clone --depth 1 https://aur.archlinux.org/paru-bin {clone_path}",
         f"cd {clone_path}",
-        "makepkg -si",
+        "makepkg -si --noconfirm",
     ]
 
     execute_cmds_as_user(config["username"], cmds)
 
 
 def install_dotdrop(config: Config):
-    cmds = ["paru --skipreview -Sy dotdrop"]
+    cmds = ["paru --skipreview --noconfirm -Sy dotdrop"]
 
     execute_cmds_as_user(config["username"], cmds)
 
@@ -174,7 +174,7 @@ def install_krapaince_config(config: Config):
         f"cd {dotfiles_dir}/packages",
         f"python ./install.py {dotfiles_profile}",
         "cd ..",
-        f"dotdrop install -c dotdrop/config.yaml -p {dotfiles_profile} -D",
+        f"dotdrop install -f -c dotdrop/config.yaml -p {dotfiles_profile}",
     ]
     execute_cmds_as_user(config["username"], cmds)
     execute_command(["chsh", "-s", "/usr/bin/fish", config["username"]])
