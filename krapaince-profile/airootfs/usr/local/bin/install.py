@@ -12,13 +12,11 @@ from utils import (
     CONFIG_FILEPATH,
     CONFIG_PATH,
     Colors,
-    Config,
     Device,
     add_partition_number,
     eprint,
     execute_command,
     get_cpu_manufacturer,
-    load_config,
     select_from_dict,
 )
 
@@ -256,20 +254,21 @@ def execute_host_operation(operation):
                 parents=True, exist_ok=True
             )
         case "post":
-            os.removedirs(join_absolute(ROOT_MOUNTPOINT, CONFIG_PATH))
+            shutil.rmtree(join_absolute(ROOT_MOUNTPOINT, CONFIG_PATH))
 
     for (live_usb, (host, should_delete)) in filepaths:
         match operation:
             case "pre":
                 shutil.copy(live_usb, host)
             case "post":
-                if should_delete:
-                    os.remove(host)
+                if should_delete and host.exists():
+                    if host.is_dir():
+                        shutil.rmtree(host)
+                    else:
+                        os.remove(host)
 
 
 def main():
-    config = load_config()
-
     checks_boot_mode()
     check_internet_connection()
     update_system_clock()
