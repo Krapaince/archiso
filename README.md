@@ -40,6 +40,7 @@ It does the following:
 - Set the locale
 - Set the hostname and `/etc/hosts`
 - Generate initramfs
+- Update pacman's keyring
 - Setup sudo (add wheel group to sudoers)
 - Set root password
 - Configure boot loader (bootctl)

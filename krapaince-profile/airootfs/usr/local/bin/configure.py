@@ -63,6 +63,11 @@ def generate_initramfs():
     execute_command(["mkinitcpio", "-P"], capture_output=False)
 
 
+def update_keyring():
+    execute_command(["pacman-key", "--init"], capture_output=False)
+    execute_command(["pacman-key", "--populate"], capture_output=False)
+
+
 def setup_sudo():
     sudoers_filepath = Path("/etc/sudoers").as_posix()
     st = os.stat(sudoers_filepath).st_mode
@@ -190,6 +195,7 @@ def main():
     setup_network(config)
     set_mkinitcpio_conf(has_encrypted_partition)
     generate_initramfs()
+    update_keyring()
     setup_sudo()
     set_root_password()
     configure_boot_loader(device, has_encrypted_partition)
