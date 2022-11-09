@@ -2,3 +2,4 @@ __pycache__/
 archiso-tmp/
 out
 releng
+archlinux-disk-a.img
